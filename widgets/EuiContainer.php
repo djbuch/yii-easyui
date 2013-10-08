@@ -104,17 +104,17 @@ class EuiContainer extends EuiControl {
 	public function init()
 	{		
 		parent::init();
-		$this->initItems($this);			
+		$this->initItems($this);
+		$options = $this->toOptions();
+		unset($options['content']);
+		unset($options['inline']);
+		
+		echo CHtml::openTag('div', $options)."\n";			
 	}
 		
 	
 	public function run()
 	{	
-		$options = $this->toOptions();
-		unset($options['content']);
-		unset($options['inline']);
-		
-		echo CHtml::openTag('div', $options)."\n";
 		echo $this->content."\n";	
 		$this->renderItems();
 		echo CHtml::closeTag('div')."\n";				
